@@ -17,6 +17,9 @@
             embedded
             gesture-detector
         >
+            <a-assets>
+                <img id="card" src="assets/asset.gif" />
+            </a-assets>
             <a-marker
                 id="animated-marker"
                 type="pattern"
@@ -27,13 +30,16 @@
                 cursor="fuse: false; rayOrigin: mouse;"
                 id="markerA"
             >
-                <a-image
+                <!--<a-image
                     src="assets/asset.gif"
                     scale="1 1 1"
                     class="clickable"
                     rotation="-90 0 0"
                     gesture-handler
-                ></a-image>
+                ></a-image>-->
+                <a-entity id="target" mindar-image-target="targetIndex: 0">
+                    <a-plane id="image" src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+                </a-entity>
             </a-marker>
 
             <a-entity camera></a-entity>
