@@ -12,9 +12,9 @@
                     this.vid = document.querySelector("#vid");
 
                     marker.addEventListener('markerFound', function () {
-                        this.toggle = true;
-                        this.vid.play();
-                        this.vid.muted = false;
+                        //this.toggle = true;
+                        //this.vid.play();
+                        //this.vid.muted = false;
                         
                         console.log("tick")
                     
@@ -37,8 +37,8 @@
                     }.bind(this));
 
                     marker.addEventListener('markerLost', function () {
-                        this.toggle = false;
-                        this.vid.pause();
+                        //this.toggle = false;
+                        //this.vid.pause();
                     }.bind(this));
                 }
             });
