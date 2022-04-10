@@ -5,6 +5,33 @@
         <script src="https://raw.githack.com/AR-js-org/AR.js/3.0.2/aframe/build/aframe-ar-nft.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+        <script>
+            AFRAME.registerComponent("marker-distance", {
+                tick: function () {
+                    this.markerDistance()
+                },
+                markerDistance: function () {
+                    console.log("tick")
+                    
+                    var marker1Pos, marker2Pos
+
+                    var marker1 = document.querySelector("#image")
+                    var marker2 = document.querySelector("#camera")
+
+                    marker1Pos = new THREE.Vector3();
+                    marker1.object3D.getWorldPosition(marker1Pos);
+                    console.log(marker1Pos)
+
+                    marker2Pos = new THREE.Vector3();
+                    marker2.object3D.getWorldPosition(marker2Pos);
+                    console.log(marker2Pos)
+
+                    //distance
+                    this.d = marker1Pos.distanceTo(marker2Pos);
+                    console.log("distance" + this.d)
+                }
+            });
+          </script>
     </head>
 
     <body style="margin: 0; overflow: hidden;">
@@ -49,12 +76,12 @@
                 id="a-nft"
             >
                 <a-entity id="target" mindar-image-target="targetIndex: 0">
-                    <a-plane id="image" src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
+                    <a-plane id="image" src="#card" position="0 0 -2" height="0.552" width="1" rotation="0 0 0"></a-plane>
                 </a-entity>
             <!--</a-marker>-->
             </a-nft>
 
-            <a-entity camera></a-entity>
+            <a-entity camera id="camera"></a-entity>
         </a-scene>
     </body>
 </html>
