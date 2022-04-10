@@ -20,7 +20,7 @@
             <a-assets>
                 <img id="card" src="assets/asset.gif" />
             </a-assets>
-            <a-marker
+            <!--<a-marker
                 id="animated-marker"
                 type="pattern"
                 preset="custom"
@@ -29,7 +29,7 @@
                 emitevents="true"
                 cursor="fuse: false; rayOrigin: mouse;"
                 id="markerA"
-            >
+            >-->
                 <!--<a-image
                     src="assets/asset.gif"
                     scale="1 1 1"
@@ -37,10 +37,22 @@
                     rotation="-90 0 0"
                     gesture-handler
                 ></a-image>-->
+            <a-nft
+                type="nft"
+                url="AR-ijnhfo/assets/marker"
+                smooth="true"
+                smoothCount="10"
+                smoothTolerance=".01"
+                smoothThreshold="5"
+                emitevents="true"
+                videohandler
+                id="a-nft"
+            >
                 <a-entity id="target" mindar-image-target="targetIndex: 0">
                     <a-plane id="image" src="#card" position="0 0 0" height="0.552" width="1" rotation="0 0 0"></a-plane>
                 </a-entity>
-            </a-marker>
+            <!--</a-marker>-->
+            </a-nft>
 
             <a-entity camera></a-entity>
         </a-scene>
