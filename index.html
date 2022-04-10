@@ -20,15 +20,20 @@
                     
                         var marker1Pos, marker2Pos
 
-                        var marker1 = document.querySelector("#camera")
-                        var marker2 = document.querySelector("#image")
+                        var scene = document.querySelector("#scene").object3D
+                        var marker1 = document.querySelector("#a-nft").object3D
+                        var marker2 = document.querySelector("#image").object3D
 
+                        scene.attach(marker2);
+                        marker2.position.set( 0, 0, -2 );
+                        marker1.attach( marker2 );
+                        
                         marker1Pos = new THREE.Vector3();
-                        marker1.object3D.getWorldPosition(marker1Pos);
+                        marker1.getWorldPosition(marker1Pos);
                         console.log(marker1Pos)
 
                         marker2Pos = new THREE.Vector3();
-                        marker2.object3D.getWorldPosition(marker2Pos);
+                        marker2.getWorldPosition(marker2Pos);
                         console.log(marker2Pos)
 
                         //distance
