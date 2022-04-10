@@ -6,29 +6,40 @@
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
         <script src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
         <script>
-            AFRAME.registerComponent("marker-distance", {
-                tick: function () {
-                    this.markerDistance()
-                },
-                markerDistance: function () {
-                    console.log("tick")
+            AFRAME.registerComponent('videohandler', {
+                init: function () {
+                    var marker = this.el;
+                    this.vid = document.querySelector("#vid");
+
+                    marker.addEventListener('markerFound', function () {
+                        this.toggle = true;
+                        this.vid.play();
+                        this.vid.muted = false;
+                        
+                        console.log("tick")
                     
-                    var marker1Pos, marker2Pos
+                        var marker1Pos, marker2Pos
 
-                    var marker1 = document.querySelector("#image")
-                    var marker2 = document.querySelector("#camera")
+                        var marker1 = document.querySelector("#camera")
+                        var marker2 = document.querySelector("#image")
 
-                    marker1Pos = new THREE.Vector3();
-                    marker1.object3D.getWorldPosition(marker1Pos);
-                    console.log(marker1Pos)
+                        marker1Pos = new THREE.Vector3();
+                        marker1.object3D.getWorldPosition(marker1Pos);
+                        console.log(marker1Pos)
 
-                    marker2Pos = new THREE.Vector3();
-                    marker2.object3D.getWorldPosition(marker2Pos);
-                    console.log(marker2Pos)
+                        marker2Pos = new THREE.Vector3();
+                        marker2.object3D.getWorldPosition(marker2Pos);
+                        console.log(marker2Pos)
 
-                    //distance
-                    this.d = marker1Pos.distanceTo(marker2Pos);
-                    console.log("distance" + this.d)
+                        //distance
+                        this.d = marker1Pos.distanceTo(marker2Pos);
+                        console.log("distance" + this.d)
+                    }.bind(this));
+
+                    marker.addEventListener('markerLost', function () {
+                        this.toggle = false;
+                        this.vid.pause();
+                    }.bind(this));
                 }
             });
           </script>
