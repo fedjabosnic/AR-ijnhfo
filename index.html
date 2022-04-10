@@ -24,9 +24,9 @@
                         var marker1 = document.querySelector("#a-nft").object3D
                         var marker2 = document.querySelector("#image").object3D
 
-                        scene.attach(marker2);
-                        marker2.position.set( 0, 0, -2 );
-                        marker1.attach( marker2 );
+                        //scene.attach(marker2);
+                        //marker2.position.set( 0, 0, -2 );
+                        //marker1.attach( marker2 );
                         
                         marker1Pos = new THREE.Vector3();
                         marker1.getWorldPosition(marker1Pos);
@@ -63,16 +63,16 @@
             <a-assets>
                 <img id="card" src="assets/asset.gif" />
             </a-assets>
-            <!--<a-marker
+            <a-marker
                 id="animated-marker"
                 type="pattern"
                 preset="custom"
-                url="assets/marker.patt"
+                url="assets/pattern-marker-x.patt"
                 raycaster="objects: .clickable"
                 emitevents="true"
                 cursor="fuse: false; rayOrigin: mouse;"
                 id="markerA"
-            >-->
+            >
                 <!--<a-image
                     src="assets/asset.gif"
                     scale="1 1 1"
@@ -80,7 +80,7 @@
                     rotation="-90 0 0"
                     gesture-handler
                 ></a-image>-->
-            <a-nft
+            <!--<a-nft
                 type="nft"
                 url="AR-ijnhfo/assets/complex"
                 smooth="true"
@@ -91,12 +91,12 @@
                 videohandler
                 position="0 0 0"
                 id="a-nft"
-            >
+            >-->
                 <a-entity id="target" mindar-image-target="targetIndex: 0">
-                    <a-plane id="image" src="#card" position="0 0 -2" height="0.552" width="1" rotation="0 0 0"></a-plane>
+                    <a-plane id="image" src="#card" position="0 0 0" height="1" width="1" rotation="0 0 0"></a-plane>
                 </a-entity>
-            <!--</a-marker>-->
-            </a-nft>
+            </a-marker>
+            <!--</a-nft>-->
 
             <a-entity camera id="camera"></a-entity>
         </a-scene>
